@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flute</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        #tones {
+            width: 800px;
+            font-size: 24pt;
+        }
+        #flutes {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        #legend td{
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h2>
+    Введите ноты обозначенные латинскими буквами:
+</h2>
+<table id="legend">
+    <tr>
+        <th>До</th>
+        <th>Ре</th>
+        <th>Ми</th>
+        <th>Фа</th>
+        <th>Соль</th>
+        <th>Ля</th>
+        <th>Си</th>
+    </tr>
+    <tr>
+        <td>С</td>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+        <td>G</td>
+        <td>A</td>
+        <td>B</td>
+    </tr>
+</table>
+<form action="frame.html" target="flutes" method="get">
+    <p>
+        <textarea id="tones" name="tones" spellcheck="false">ABCDEF
+FEDCBA</textarea>
+    </p>
+    <p>
+        <input type="submit" value="Нарисовать флейты"/>
+    </p>
+</form>
+
+<iframe id="flutes" name="flutes" src="frame.html?abcdefg"></iframe>
+</body>
+</html>

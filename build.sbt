@@ -8,4 +8,8 @@ enablePlugins(ScalaJSPlugin)
 
 scalaJSStage in Global := FastOptStage
 
+persistLauncher in Compile := true
+
+persistLauncher in Test := false
+
 libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.0"
