@@ -43,7 +43,8 @@ object FluteApp extends JSApp {
   override def main() = {
     val canvas = dom.document.getElementById("fluteCanvas").asInstanceOf[html.Canvas]
     implicit val context2D = canvas.getContext("2d").asInstanceOf[C2D]
-    drawFlutes((1, 20), parseTones)
+     drawFlutes((5, 20), parseTones)
+//    drawFlute((20, 20), Tone.C)
   }
 
   private def parseTones: Seq[Seq[Tone.Value]] = {
@@ -70,28 +71,70 @@ object FluteApp extends JSApp {
       for (h <- offsets.zip(states(tone))) drawHole(h._1, h._2)
     }
 
-//    val rectUpperLeft = upperLeft down 10
-//    context.save()
-//    context.beginPath()
-//    context.fillStyle = "#DDDDDD"
-//    context.fillRect(rectUpperLeft.x, rectUpperLeft.y, width, height)
-//    context.shadowBlur = 10
-//    context.shadowColor = "#555555"
-//    context.stroke()
-//    context.restore()
+    def drawMund(s: Point, height: Int, topWidth: Int, bottomWidth: Int)(implicit context: C2D) = {
+      val deltaWidth = bottomWidth - topWidth
+      context.beginPath()
+      context.moveTo(s.x + deltaWidth, s.y)
+      context.lineTo(s.x + topWidth, s.y)
+      context.quadraticCurveTo(s.x + bottomWidth, s.y, s.x + bottomWidth, s.y + height)
+      context.moveTo(s.x, s.y + height)
+      context.quadraticCurveTo(s.x, s.y, s.x + deltaWidth, s.y)
+      context.stroke()
+    }
 
-    val p = upperLeft
+    def drawRing(s: Point, width: Int, height: Int, sideRadius: Int = 4, topRadius: Int = 6)(implicit context: C2D) = {
+      context.beginPath()
+      context.moveTo(s.x, s.y)
+      context.quadraticCurveTo(s.x - sideRadius, s.y + height / 2, s.x, s.y + height)
+      context.quadraticCurveTo(s.x + width / 2, s.y + height + topRadius, s.x + width, s.y + height)
+      context.quadraticCurveTo(s.x + width + sideRadius, s.y + height / 2, s.x + width, s.y)
+      context.quadraticCurveTo(s.x + width / 2, s.y + topRadius, s.x, s.y)
+      context.stroke()
+    }
 
-    context.beginPath()
-    //context.moveTo(p.x + 5, p.y)
-    //context.lineTo(p.x + 25, p.y)
-    context.arcTo(p.x + 25, p.y, p.x + 30, p.y, 50)
-    context.stroke()
-    drawTone(tone)
+    def drawTop(s: Point, height: Int, topWidth: Int, bottomWidth: Int)(implicit context: C2D) = {
+      val deltaWidth = topWidth - bottomWidth
+      context.beginPath()
+      context.moveTo(s.x, s.y)
+      context.lineTo(s.x + deltaWidth, s.y + height)
+      context.moveTo(s.x + bottomWidth, s.y + height)
+      context.lineTo(s.x + topWidth, s.y)
+      context.stroke()
+    }
+
+    val mundStart = upperLeft
+    val mundHeight = 40
+    val mundTopWidth = 20
+    val mundBottomWidth = 30
+
+    drawMund(mundStart, mundHeight, mundTopWidth, mundBottomWidth)
+
+    val ringStart = mundStart down mundHeight
+    val ringWidth = mundBottomWidth
+    val ringHeight = 6
+
+    drawRing(ringStart, ringWidth, ringHeight)
+
+    val topStart = ringStart down ringHeight
+    val topHeight = 70
+    val topTopWidth = ringWidth
+    val topWidthDelta = 4
+    val topBottomWidth = topTopWidth - topWidthDelta
+
+    drawTop(topStart, topHeight, topTopWidth, topBottomWidth)
+
+    val ring2Start = topStart down topHeight right topWidthDelta
+    val ring2Width = topBottomWidth - topWidthDelta
+    val ring2Height = ringHeight
+
+    drawRing(ring2Start, ring2Width, ring2Height)
+
+
+//    drawTone(tone)
 
     //    val label = upperLeft down height down 30 right halfWidth / 2
-//    context.font = "bold 14pt Arial"
-//    context.fillText(tone.toString, label.x, label.y)
+    //    context.font = "bold 14pt Arial"
+    //    context.fillText(tone.toString, label.x, label.y)
   }
 
   private def circle(center: Point, radius: Double, fillColor: Option[String] = None)(implicit context: C2D) = {
