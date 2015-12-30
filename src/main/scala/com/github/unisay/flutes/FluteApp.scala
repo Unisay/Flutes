@@ -10,8 +10,9 @@ import scala.scalajs.js.annotation.JSExport
 object FluteApp extends JSApp {
 
   type C2D = CanvasRenderingContext2D
-  implicit def intsToPoint(p: (Int, Int)): Point = Point(p._1, p._2)
-  implicit def doublesToPoint(p: (Double, Double)): Point = Point(p._1, p._2)
+  implicit def intsToVector2d(vector: (Int, Int)): Vector2d = Vector2d(vector._1, vector._2)
+  implicit def doublesToVector2d(vector: (Double, Double)): Vector2d = Vector2d(vector._1, vector._2)
+  implicit val scale = Scale(1)
 
   object Tone extends Enumeration {
     val
@@ -43,8 +44,8 @@ object FluteApp extends JSApp {
   override def main() = {
     val canvas = dom.document.getElementById("fluteCanvas").asInstanceOf[html.Canvas]
     implicit val context2D = canvas.getContext("2d").asInstanceOf[C2D]
-     drawFlutes((5, 20), parseTones)
-//    drawFlute((20, 20), Tone.C)
+//     drawFlutes((5, 20), parseTones)
+    drawFlute((20, 20), Tone.C)
   }
 
   private def parseTones: Seq[Seq[Tone.Value]] = {
@@ -54,16 +55,16 @@ object FluteApp extends JSApp {
     }
   }
 
-  private def drawFlutes(start: Point, toneRows: Seq[Seq[Tone.Value]])(implicit context: C2D) =
+  private def drawFlutes(start: Vector2d, toneRows: Seq[Seq[Tone.Value]])(implicit context: C2D) =
     toneRows.foldLeft(start) { (point, tones) => drawRow(point, tones); point down 200 }
 
-  private def drawRow(start: Point, tones: Seq[Tone.Value])(implicit context: C2D) =
+  private def drawRow(start: Vector2d, tones: Seq[Tone.Value])(implicit context: C2D) =
     tones.foldLeft(start) { (point, tone) => drawFlute(point, tone); point right 60 }
 
-  private def drawFlute(upperLeft: Point, tone: Tone.Value, width: Int = 26, height: Int = 160)(implicit context: C2D) = {
+  private def drawFlute(upperLeft: Vector2d, tone: Tone.Value, width: Double = 26, height: Double = 160)(implicit context: C2D) = {
     val halfWidth = width / 2
 
-    def drawHole(offset: Int, closed: Int)(implicit context: C2D) =
+    def drawHole(offset: Double, closed: Int)(implicit context: C2D) =
       circle(upperLeft right halfWidth down offset, halfWidth / 3, if (closed == 1) Some("#888") else None)
 
     def drawTone(tone: Tone.Value) = {
@@ -71,41 +72,73 @@ object FluteApp extends JSApp {
       for (h <- offsets.zip(states(tone))) drawHole(h._1, h._2)
     }
 
-    def drawMund(s: Point, height: Int, topWidth: Int, bottomWidth: Int)(implicit context: C2D) = {
+    def drawMund(s: Vector2d, height: Double, topWidth: Double, bottomWidth: Double)(implicit context: C2D) = {
       val deltaWidth = bottomWidth - topWidth
-      context.beginPath()
-      context.moveTo(s.x + deltaWidth, s.y)
-      context.lineTo(s.x + topWidth, s.y)
-      context.quadraticCurveTo(s.x + bottomWidth, s.y, s.x + bottomWidth, s.y + height)
-      context.moveTo(s.x, s.y + height)
-      context.quadraticCurveTo(s.x, s.y, s.x + deltaWidth, s.y)
-      context.stroke()
+      val topLeft = s right deltaWidth / 2
+      val topRight = topLeft right topWidth
+      val bottomLeft = s down height
+      val bottomRight = bottomLeft right bottomWidth
+
+      strokePath { implicit context ⇒
+        moveTo(topLeft)
+        lineTo(topRight)
+        bezierTo(topRight down 5, bottomRight up height / 2 right 5, bottomRight)
+        moveTo(bottomLeft)
+        bezierTo(bottomLeft up height / 2 left 5, topLeft down 5, topLeft)
+      }
     }
 
-    def drawRing(s: Point, width: Int, height: Int, sideRadius: Int = 4, topRadius: Int = 6)(implicit context: C2D) = {
-      context.beginPath()
-      context.moveTo(s.x, s.y)
-      context.quadraticCurveTo(s.x - sideRadius, s.y + height / 2, s.x, s.y + height)
-      context.quadraticCurveTo(s.x + width / 2, s.y + height + topRadius, s.x + width, s.y + height)
-      context.quadraticCurveTo(s.x + width + sideRadius, s.y + height / 2, s.x + width, s.y)
-      context.quadraticCurveTo(s.x + width / 2, s.y + topRadius, s.x, s.y)
-      context.stroke()
+    def drawRing(s: Vector2d, width: Double, height: Double, sideRadius: Double = 4, topRadius: Double = 6)(implicit context: C2D) = {
+      strokePath { implicit context ⇒
+        moveTo(s)
+        quadraticTo(s left sideRadius down height / 2, s down height)
+        quadraticTo(s right width / 2 down height + topRadius, s right width down height)
+        quadraticTo(s right width + sideRadius down height / 2, s right width)
+        quadraticTo(s right width / 2 down topRadius, s)
+      }
     }
 
-    def drawTop(s: Point, height: Int, topWidth: Int, bottomWidth: Int)(implicit context: C2D) = {
-      val deltaWidth = topWidth - bottomWidth
-      context.beginPath()
-      context.moveTo(s.x, s.y)
-      context.lineTo(s.x + deltaWidth, s.y + height)
-      context.moveTo(s.x + bottomWidth, s.y + height)
-      context.lineTo(s.x + topWidth, s.y)
-      context.stroke()
+    def drawTop(s: Vector2d, height: Double, topWidth: Double, bottomWidth: Double)(implicit context: C2D) = {
+      strokePath { implicit context ⇒
+        moveTo(s)
+        lineTo(s right topWidth - bottomWidth down height)
+        moveTo(s right bottomWidth down height)
+        lineTo(s right topWidth)
+      }
+    }
+
+    def drawAirHole(topLeft: Vector2d, width: Double, height: Double, radius: Double = .8)(implicit context: C2D) = {
+      val topCenter = topLeft right (width / 2)
+      val bottomCenter = topCenter down height
+      val topRight = topLeft right width
+      val delta = 0.3
+      val bottomLeft = topLeft down height right delta
+      val bottomRight = topRight down height left delta
+
+      val cutHeight = 3 * height
+      val cutDelta = 2
+
+      strokePath { implicit context ⇒
+        moveTo(topLeft)
+        lineTo(topLeft down cutHeight left cutDelta)
+        quadraticTo(bottomCenter down cutHeight down 3 * radius, topRight down cutHeight right cutDelta)
+        lineTo(topRight)
+      }
+
+      strokePath { implicit context ⇒
+        moveTo(topLeft)
+        quadraticTo(topCenter down radius, topRight)
+        lineTo(bottomRight)
+        quadraticTo(bottomCenter down radius, bottomLeft)
+        lineTo(topLeft)
+        fill("#222")
+      }
     }
 
     val mundStart = upperLeft
-    val mundHeight = 40
-    val mundTopWidth = 20
-    val mundBottomWidth = 30
+    val mundHeight = 30
+    val mundTopWidth = 15
+    val mundBottomWidth = 26
 
     drawMund(mundStart, mundHeight, mundTopWidth, mundBottomWidth)
 
@@ -116,12 +149,17 @@ object FluteApp extends JSApp {
     drawRing(ringStart, ringWidth, ringHeight)
 
     val topStart = ringStart down ringHeight
-    val topHeight = 70
+    val topHeight = 60
     val topTopWidth = ringWidth
     val topWidthDelta = 4
     val topBottomWidth = topTopWidth - topWidthDelta
 
     drawTop(topStart, topHeight, topTopWidth, topBottomWidth)
+
+    val holeWidth = topTopWidth / 3
+    val holeHeight = 5
+
+    drawAirHole(topStart right (topTopWidth - holeWidth) / 2 down 3, holeWidth, holeHeight)
 
     val ring2Start = topStart down topHeight right topWidthDelta
     val ring2Width = topBottomWidth - topWidthDelta
@@ -137,21 +175,60 @@ object FluteApp extends JSApp {
     //    context.fillText(tone.toString, label.x, label.y)
   }
 
-  private def circle(center: Point, radius: Double, fillColor: Option[String] = None)(implicit context: C2D) = {
-    context.beginPath()
-    context.arc(center.x, center.y, radius, 0, 2 * PI)
-    fillColor.foreach { color =>
-      context.fillStyle = color
-      context.fill()
+  private def circle(center: Vector2d, radius: Double, fillColor: Option[String] = None)(implicit context: C2D) = {
+    strokePath { implicit context ⇒
+      context.arc(center.x, center.y, radius, 0, 2 * PI)
+      fillColor foreach fill
     }
+  }
+
+
+  private def fill(style: String)(implicit context: C2D) = {
+    val backup = context.fillStyle
+    context.fillStyle = style
+    context.fill()
+    context.fillStyle = backup
+  }
+
+  private def moveTo(v: Vector2d)(implicit context: C2D, scale: Scale) =
+    context.moveTo(v.x * scale.x, v.y * scale.y)
+
+  private def lineTo(v: Vector2d)(implicit context: C2D, scale: Scale) =
+    context.lineTo(v.x * scale.x, v.y * scale.y)
+
+  private def fillRect(v: Vector2d, wh: Vector2d)(implicit context: C2D, scale: Scale) =
+    context.fillRect(
+      v.x * scale.x, v.y * scale.y,
+      wh.x * scale.x, wh.y * scale.y)
+
+  private def bezierTo(c1: Vector2d, c2: Vector2d, to: Vector2d)(implicit context: C2D) =
+    context.bezierCurveTo(
+      c1.x * scale.x, c1.y * scale.y,
+      c2.x * scale.x, c2.y * scale.y,
+      to.x * scale.x, to.y * scale.y)
+
+  private def quadraticTo(c: Vector2d, to: Vector2d)(implicit context: C2D) =
+    context.quadraticCurveTo(
+      c.x * scale.x, c.y * scale.y,
+      to.x * scale.x, to.y * scale.y)
+
+  private def strokePath(f: C2D => Unit)(implicit context: C2D) = {
+    context.beginPath()
+    f(context)
     context.stroke()
   }
 
 }
 
-case class Point(x: Double, y: Double) {
-  def up(d: Double) = Point(x, y - d)
-  def down(d: Double) = Point(x, y + d)
-  def left(d: Double) = Point(x - d, y)
-  def right(d: Double) = Point(x + d, y)
+object Scale {
+  def apply(factor: Double) = new Scale(factor, factor)
+}
+
+case class Scale(x: Double, y: Double)
+
+case class Vector2d(x: Double, y: Double) {
+  def up(d: Double) = Vector2d(x, y - d)
+  def down(d: Double) = Vector2d(x, y + d)
+  def left(d: Double) = Vector2d(x - d, y)
+  def right(d: Double) = Vector2d(x + d, y)
 }
