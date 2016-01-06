@@ -2615,23 +2615,14 @@ function $s_sc_IndexedSeqOptimized$class__prefixLengthImpl__p0__sc_IndexedSeqOpt
   };
   return i
 }
-function $s_sc_IndexedSeqOptimized$class__isEmpty__sc_IndexedSeqOptimized__Z($$this) {
-  return ($$this.length__I() === 0)
-}
 function $s_sc_IndexedSeqOptimized$class__exists__sc_IndexedSeqOptimized__F1__Z($$this, p) {
   return ($s_sc_IndexedSeqOptimized$class__prefixLengthImpl__p0__sc_IndexedSeqOptimized__F1__Z__I($$this, p, false) !== $$this.length__I())
 }
+function $s_sc_IndexedSeqOptimized$class__isEmpty__sc_IndexedSeqOptimized__Z($$this) {
+  return ($$this.length__I() === 0)
+}
 function $s_sc_IndexedSeqOptimized$class__head__sc_IndexedSeqOptimized__O($$this) {
   return ($s_sc_IndexedSeqOptimized$class__isEmpty__sc_IndexedSeqOptimized__Z($$this) ? new $c_sc_IndexedSeqLike$Elements().init___sc_IndexedSeqLike__I__I($$this, 0, $$this.length__I()).next__O() : $$this.apply__I__O(0))
-}
-function $s_sc_IterableLike$class__zip__sc_IterableLike__sc_GenIterable__scg_CanBuildFrom__O($$this, that, bf) {
-  var b = bf.apply__O__scm_Builder($$this.repr__O());
-  var these = $$this.iterator__sc_Iterator();
-  var those = that.iterator__sc_Iterator();
-  while ((these.hasNext__Z() && those.hasNext__Z())) {
-    b.$$plus$eq__O__scm_Builder(new $c_T2().init___O__O(these.next__O(), those.next__O()))
-  };
-  return b.result__O()
 }
 function $s_sc_IterableLike$class__copyToArray__sc_IterableLike__O__I__I__V($$this, xs, start, len) {
   var i = start;
@@ -4892,7 +4883,10 @@ function $m_sr_Statics$() {
 /** @constructor */
 function $c_Lcom_github_unisay_flutes_FluteApp$() {
   $c_O.call(this);
-  this.states$1 = null
+  this.scale$1 = null;
+  this.states$1 = null;
+  this.fluteWidth$1 = 0;
+  this.fluteHeight$1 = 0
 }
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype = new $h_O();
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype.constructor = $c_Lcom_github_unisay_flutes_FluteApp$;
@@ -4901,215 +4895,311 @@ function $h_Lcom_github_unisay_flutes_FluteApp$() {
   /*<skip>*/
 }
 $h_Lcom_github_unisay_flutes_FluteApp$.prototype = $c_Lcom_github_unisay_flutes_FluteApp$.prototype;
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.$$js$exported$meth$resizeCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__O = (function(canvas, context) {
+  this.resizeCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(canvas, context)
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(v, closed, radius, context) {
+  this.circle__p1__Lcom_github_unisay_flutes_Vector2d__D__s_Option__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v, radius, ((closed === 1) ? new $c_s_Some().init___O("#222") : $m_s_None$()), context)
+});
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype.init___ = (function() {
   $n_Lcom_github_unisay_flutes_FluteApp$ = this;
+  this.scale$1 = new $c_Lcom_github_unisay_flutes_Scale().init___D__D(1.0, 1.0);
+  var jsx$27 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().c$2;
+  $m_sci_List$();
+  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 1, 1, 1]);
+  var this$3 = $m_sci_List$();
+  var cbf = this$3.ReusableCBFInstance$2;
+  var jsx$26 = new $c_T2().init___O__O(jsx$27, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs, cbf)));
+  var jsx$25 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().d$2;
+  $m_sci_List$();
+  var xs$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 1, 1, 0]);
+  var this$5 = $m_sci_List$();
+  var cbf$1 = this$5.ReusableCBFInstance$2;
+  var jsx$24 = new $c_T2().init___O__O(jsx$25, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$1, cbf$1)));
+  var jsx$23 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().e$2;
+  $m_sci_List$();
+  var xs$2 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 1, 0, 0]);
+  var this$7 = $m_sci_List$();
+  var cbf$2 = this$7.ReusableCBFInstance$2;
+  var jsx$22 = new $c_T2().init___O__O(jsx$23, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$2, cbf$2)));
+  var jsx$21 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().f$2;
+  $m_sci_List$();
+  var xs$3 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 0, 0, 0]);
+  var this$9 = $m_sci_List$();
+  var cbf$3 = this$9.ReusableCBFInstance$2;
+  var jsx$20 = new $c_T2().init___O__O(jsx$21, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$3, cbf$3)));
+  var jsx$19 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().g$2;
+  $m_sci_List$();
+  var xs$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 0, 0, 0, 0]);
+  var this$11 = $m_sci_List$();
+  var cbf$4 = this$11.ReusableCBFInstance$2;
+  var jsx$18 = new $c_T2().init___O__O(jsx$19, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$4, cbf$4)));
+  var jsx$17 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().a$2;
+  $m_sci_List$();
+  var xs$5 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 0, 0, 0, 0, 0]);
+  var this$13 = $m_sci_List$();
+  var cbf$5 = this$13.ReusableCBFInstance$2;
+  var jsx$16 = new $c_T2().init___O__O(jsx$17, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$5, cbf$5)));
+  var jsx$15 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().b$2;
+  $m_sci_List$();
+  var xs$6 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 0, 0, 0, 0, 0, 0]);
+  var this$15 = $m_sci_List$();
+  var cbf$6 = this$15.ReusableCBFInstance$2;
+  var jsx$14 = new $c_T2().init___O__O(jsx$15, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$6, cbf$6)));
   var jsx$13 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().C$2;
   $m_sci_List$();
-  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 0, 0, 0, 0, 0, 0]);
-  var this$2 = $m_sci_List$();
-  var cbf = this$2.ReusableCBFInstance$2;
-  var jsx$12 = new $c_T2().init___O__O(jsx$13, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs, cbf)));
+  var xs$7 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 0, 1, 0, 0, 0, 0, 0]);
+  var this$17 = $m_sci_List$();
+  var cbf$7 = this$17.ReusableCBFInstance$2;
+  var jsx$12 = new $c_T2().init___O__O(jsx$13, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$7, cbf$7)));
   var jsx$11 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().D$2;
   $m_sci_List$();
-  var xs$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 0, 0, 0, 0, 0]);
-  var this$4 = $m_sci_List$();
-  var cbf$1 = this$4.ReusableCBFInstance$2;
-  var jsx$10 = new $c_T2().init___O__O(jsx$11, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$1, cbf$1)));
+  var xs$8 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([0, 0, 1, 0, 0, 0, 0, 0]);
+  var this$19 = $m_sci_List$();
+  var cbf$8 = this$19.ReusableCBFInstance$2;
+  var jsx$10 = new $c_T2().init___O__O(jsx$11, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$8, cbf$8)));
   var jsx$9 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().E$2;
   $m_sci_List$();
-  var xs$2 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 0, 0, 0, 0]);
-  var this$6 = $m_sci_List$();
-  var cbf$2 = this$6.ReusableCBFInstance$2;
-  var jsx$8 = new $c_T2().init___O__O(jsx$9, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$2, cbf$2)));
+  var xs$9 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([0, 1, 1, 1, 1, 1, 0, 0]);
+  var this$21 = $m_sci_List$();
+  var cbf$9 = this$21.ReusableCBFInstance$2;
+  var jsx$8 = new $c_T2().init___O__O(jsx$9, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$9, cbf$9)));
   var jsx$7 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().F$2;
   $m_sci_List$();
-  var xs$3 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 0, 0, 0]);
-  var this$8 = $m_sci_List$();
-  var cbf$3 = this$8.ReusableCBFInstance$2;
-  var jsx$6 = new $c_T2().init___O__O(jsx$7, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$3, cbf$3)));
+  var xs$10 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([0, 1, 1, 1, 1, 0, 0, 0]);
+  var this$23 = $m_sci_List$();
+  var cbf$10 = this$23.ReusableCBFInstance$2;
+  var jsx$6 = new $c_T2().init___O__O(jsx$7, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$10, cbf$10)));
   var jsx$5 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().G$2;
   $m_sci_List$();
-  var xs$4 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 0, 0]);
-  var this$10 = $m_sci_List$();
-  var cbf$4 = this$10.ReusableCBFInstance$2;
-  var jsx$4 = new $c_T2().init___O__O(jsx$5, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$4, cbf$4)));
+  var xs$11 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([0, 1, 1, 1, 0, 0, 0, 0]);
+  var this$25 = $m_sci_List$();
+  var cbf$11 = this$25.ReusableCBFInstance$2;
+  var jsx$4 = new $c_T2().init___O__O(jsx$5, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$11, cbf$11)));
   var jsx$3 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().A$2;
   $m_sci_List$();
-  var xs$5 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 1, 0]);
-  var this$12 = $m_sci_List$();
-  var cbf$5 = this$12.ReusableCBFInstance$2;
-  var jsx$2 = new $c_T2().init___O__O(jsx$3, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$5, cbf$5)));
+  var xs$12 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([0, 1, 1, 0, 0, 0, 0, 0]);
+  var this$27 = $m_sci_List$();
+  var cbf$12 = this$27.ReusableCBFInstance$2;
+  var jsx$2 = new $c_T2().init___O__O(jsx$3, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$12, cbf$12)));
   var jsx$1 = $m_Lcom_github_unisay_flutes_FluteApp$Tone$().B$2;
   $m_sci_List$();
-  var xs$6 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([1, 1, 1, 1, 1, 1, 1]);
-  var this$14 = $m_sci_List$();
-  var cbf$6 = this$14.ReusableCBFInstance$2;
-  var array = [jsx$12, jsx$10, jsx$8, jsx$6, jsx$4, jsx$2, new $c_T2().init___O__O(jsx$1, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$6, cbf$6)))];
-  var this$16 = new $c_scm_MapBuilder().init___sc_GenMap($m_sci_Map$EmptyMap$());
+  var xs$13 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([0, 1, 0, 0, 0, 0, 0, 0]);
+  var this$29 = $m_sci_List$();
+  var cbf$13 = this$29.ReusableCBFInstance$2;
+  var array = [jsx$26, jsx$24, jsx$22, jsx$20, jsx$18, jsx$16, jsx$14, jsx$12, jsx$10, jsx$8, jsx$6, jsx$4, jsx$2, new $c_T2().init___O__O(jsx$1, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs$13, cbf$13)))];
+  var this$31 = new $c_scm_MapBuilder().init___sc_GenMap($m_sci_Map$EmptyMap$());
   var i = 0;
   var len = $uI(array["length"]);
   while ((i < len)) {
     var index = i;
     var arg1 = array[index];
-    this$16.$$plus$eq__T2__scm_MapBuilder($as_T2(arg1));
+    this$31.$$plus$eq__T2__scm_MapBuilder($as_T2(arg1));
     i = ((1 + i) | 0)
   };
-  this.states$1 = $as_sci_Map(this$16.elems$1);
+  this.states$1 = $as_sci_Map(this$31.elems$1);
+  this.fluteWidth$1 = 30;
+  this.fluteHeight$1 = 160;
   return this
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$drawRow__Lcom_github_unisay_flutes_Point__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Point = (function(start, tones, context) {
-  return $as_Lcom_github_unisay_flutes_Point(tones.foldLeft__O__F2__O(start, new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(context$2) {
-    return (function(point$2, tone$2) {
-      var point = $as_Lcom_github_unisay_flutes_Point(point$2);
-      var tone = $as_s_Enumeration$Value(tone$2);
-      $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$drawFlute__Lcom_github_unisay_flutes_Point__s_Enumeration$Value__I__I__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(point, tone, ($m_Lcom_github_unisay_flutes_FluteApp$(), 30), ($m_Lcom_github_unisay_flutes_FluteApp$(), 200), context$2);
-      return point.right__D__Lcom_github_unisay_flutes_Point(60.0)
-    })
-  })(context))))
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.fill__p1__Lorg_scalajs_dom_raw_CanvasGradient__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(gradient, context) {
+  context["fillStyle"] = gradient;
+  context["fill"]()
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.ellipse__p1__Lcom_github_unisay_flutes_Point__Lcom_github_unisay_flutes_Point__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(center, radius, startAngle, endAngle, context) {
-  context["save"]();
-  context["beginPath"]();
-  context["translate"]((center.x$1 - radius.x$1), (center.y$1 - radius.y$1));
-  context["scale"](radius.x$1, radius.y$1);
-  context["arc"](1.0, 1.0, 1.0, startAngle, endAngle);
-  context["restore"]();
-  context["save"]();
-  context["stroke"]();
-  context["restore"]()
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$lineTo__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V = (function(v, context, scale) {
+  context["lineTo"]((v.x$1 * scale.x$1), (v.y$1 * scale.y$1))
 });
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype.main__V = (function() {
   var canvas = $g["document"]["getElementById"]("fluteCanvas");
   var context2D = canvas["getContext"]("2d");
-  this.drawFlutes__p1__Lcom_github_unisay_flutes_Point__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Point(new $c_Lcom_github_unisay_flutes_Point().init___D__D(1, 20), this.parseTones__p1__sc_Seq(), context2D)
+  var render = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(canvas$1, context2D$1) {
+    return (function(x$1$2) {
+      $m_Lcom_github_unisay_flutes_FluteApp$().resizeCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(canvas$1, context2D$1)
+    })
+  })(canvas, context2D));
+  $g["window"]["addEventListener"]("resize", (function(f) {
+    return (function(arg1) {
+      return f.apply__O__O(arg1)
+    })
+  })(render), false);
+  render.apply__O__O(null)
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$drawFlute__Lcom_github_unisay_flutes_Point__s_Enumeration$Value__I__I__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(upperLeft, tone, width, height, context) {
-  var halfWidth = ((width / 2) | 0);
-  this.line__p1__Lcom_github_unisay_flutes_Point__Lcom_github_unisay_flutes_Point__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperLeft, upperLeft.down__D__Lcom_github_unisay_flutes_Point(height), context);
-  this.line__p1__Lcom_github_unisay_flutes_Point__Lcom_github_unisay_flutes_Point__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperLeft.right__D__Lcom_github_unisay_flutes_Point(width), upperLeft.down__D__Lcom_github_unisay_flutes_Point(height).right__D__Lcom_github_unisay_flutes_Point(width), context);
-  this.ellipse__p1__Lcom_github_unisay_flutes_Point__Lcom_github_unisay_flutes_Point__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperLeft.right__D__Lcom_github_unisay_flutes_Point(halfWidth), new $c_Lcom_github_unisay_flutes_Point().init___D__D(halfWidth, 7), 3.141592653589793, 0.0, context);
-  this.ellipse__p1__Lcom_github_unisay_flutes_Point__Lcom_github_unisay_flutes_Point__D__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperLeft.down__D__Lcom_github_unisay_flutes_Point(height).right__D__Lcom_github_unisay_flutes_Point(halfWidth), new $c_Lcom_github_unisay_flutes_Point().init___D__D(halfWidth, 7), 0.0, 6.283185307179586, context);
-  this.drawTone$1__p1__s_Enumeration$Value__Lcom_github_unisay_flutes_Point__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__I__V(tone, upperLeft, context, halfWidth);
-  var label = upperLeft.down__D__Lcom_github_unisay_flutes_Point(height).down__D__Lcom_github_unisay_flutes_Point(30.0).right__D__Lcom_github_unisay_flutes_Point(((halfWidth / 2) | 0));
-  context["font"] = "bold 14pt Arial";
-  context["fillText"](tone.toString__T(), label.x$1, label.y$1)
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$moveTo__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V = (function(v, context, scale) {
+  context["moveTo"]((v.x$1 * scale.x$1), (v.y$1 * scale.y$1))
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$drawHole$1__I__I__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Point__I__V = (function(offset, closed, context, upperLeft$1, halfWidth$1) {
-  this.circle__p1__Lcom_github_unisay_flutes_Point__D__s_Option__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperLeft$1.right__D__Lcom_github_unisay_flutes_Point(halfWidth$1).down__D__Lcom_github_unisay_flutes_Point(offset), ((halfWidth$1 / 3) | 0), ((closed === 1) ? new $c_s_Some().init___O("#888") : $m_s_None$()), context)
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$fill__T__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(style, context) {
+  context["fillStyle"] = style;
+  context["fill"]()
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.drawTone$1__p1__s_Enumeration$Value__Lcom_github_unisay_flutes_Point__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__I__V = (function(tone, upperLeft$1, context$3, halfWidth$1) {
-  $m_sci_List$();
-  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([20, 40, 60, 90, 110, 130, 160]);
-  var this$2 = $m_sci_List$();
-  var cbf = this$2.ReusableCBFInstance$2;
-  var offsets = $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs, cbf));
-  var that = $as_sc_GenIterable(this.states$1.apply__O__O(tone));
-  var this$3 = $m_sci_List$();
-  var bf = this$3.ReusableCBFInstance$2;
-  var this$4 = $as_sci_List($s_sc_IterableLike$class__zip__sc_IterableLike__sc_GenIterable__scg_CanBuildFrom__O(offsets, that, bf));
-  var these = this$4;
-  while ((!these.isEmpty__Z())) {
-    var arg1 = these.head__O();
-    var h = $as_T2(arg1);
-    $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$drawHole$1__I__I__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Point__I__V(h.$$und1$mcI$sp__I(), h.$$und2$mcI$sp__I(), context$3, upperLeft$1, halfWidth$1);
-    var this$5 = these;
-    these = this$5.tail__sci_List()
-  }
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.drawFlutes__p1__Lcom_github_unisay_flutes_Vector2d__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Vector2d = (function(start, toneRows, context) {
+  return $as_Lcom_github_unisay_flutes_Vector2d(toneRows.foldLeft__O__F2__O(start, new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(context$1) {
+    return (function(point$2, tones$2) {
+      var point = $as_Lcom_github_unisay_flutes_Vector2d(point$2);
+      var tones = $as_sc_Seq(tones$2);
+      $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$drawRow__Lcom_github_unisay_flutes_Vector2d__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Vector2d(point, tones, context$1);
+      return point.down__D__Lcom_github_unisay_flutes_Vector2d($m_Lcom_github_unisay_flutes_FluteApp$().fluteHeight$1).down__D__Lcom_github_unisay_flutes_Vector2d(40.0)
+    })
+  })(context))))
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$bezierTo__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(c1, c2, to, context) {
+  context["bezierCurveTo"]((c1.x$1 * this.scale$1.x$1), (c1.y$1 * this.scale$1.y$1), (c2.x$1 * this.scale$1.x$1), (c2.y$1 * this.scale$1.y$1), (to.x$1 * this.scale$1.x$1), (to.y$1 * this.scale$1.y$1))
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$drawFlute__Lcom_github_unisay_flutes_Vector2d__s_Enumeration$Value__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(upperLeft, tone, context) {
+  context["strokeStyle"] = "black";
+  var downLeft = upperLeft.down__D__Lcom_github_unisay_flutes_Vector2d(this.fluteHeight$1);
+  var upperRight = upperLeft.right__D__Lcom_github_unisay_flutes_Vector2d(this.fluteWidth$1);
+  var downRight = upperRight.down__D__Lcom_github_unisay_flutes_Vector2d(this.fluteHeight$1);
+  context["beginPath"]();
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$line__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V(upperLeft, downLeft, context, $m_Lcom_github_unisay_flutes_FluteApp$().scale$1);
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$bezierTo__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(downLeft.up__D__Lcom_github_unisay_flutes_Vector2d(10), downRight.up__D__Lcom_github_unisay_flutes_Vector2d(10), downRight, context);
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$lineTo__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V(upperRight, context, $m_Lcom_github_unisay_flutes_FluteApp$().scale$1);
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$bezierTo__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperRight.up__D__Lcom_github_unisay_flutes_Vector2d(10), upperLeft.up__D__Lcom_github_unisay_flutes_Vector2d(10), upperLeft, context);
+  var this$2 = $m_Lcom_github_unisay_flutes_FluteApp$();
+  var array = [new $c_T2().init___O__O(0.05, "#DDDDDD"), new $c_T2().init___O__O(0.5, "white"), new $c_T2().init___O__O(0.95, "#DDDDDD")];
+  var gradient = context["createLinearGradient"](upperLeft.x$1, upperLeft.y$1, upperRight.x$1, upperRight.y$1);
+  var i = 0;
+  var len = $uI(array["length"]);
+  while ((i < len)) {
+    var index = i;
+    var arg1 = array[index];
+    var stop = $as_T2(arg1);
+    gradient["addColorStop"]($uD(stop.$$und1__O()), $as_T(stop.$$und2__O()));
+    i = ((1 + i) | 0)
+  };
+  this$2.fill__p1__Lorg_scalajs_dom_raw_CanvasGradient__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(gradient, context);
+  context["closePath"]();
+  context["stroke"]();
+  context["beginPath"]();
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$moveTo__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V(downLeft, context, $m_Lcom_github_unisay_flutes_FluteApp$().scale$1);
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$bezierTo__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(downLeft.up__D__Lcom_github_unisay_flutes_Vector2d(10), downRight.up__D__Lcom_github_unisay_flutes_Vector2d(10), downRight, context);
+  $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$bezierTo__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(downRight.down__D__Lcom_github_unisay_flutes_Vector2d(10), downLeft.down__D__Lcom_github_unisay_flutes_Vector2d(10), downLeft, context);
+  var this$3 = $m_Lcom_github_unisay_flutes_FluteApp$();
+  var g1 = downLeft.up__D__Lcom_github_unisay_flutes_Vector2d(10);
+  var g2 = downLeft.down__D__Lcom_github_unisay_flutes_Vector2d(10);
+  var array$1 = [new $c_T2().init___O__O(0.35, "white"), new $c_T2().init___O__O(0.95, "darkgray")];
+  var gradient$1 = context["createLinearGradient"](g1.x$1, g1.y$1, g2.x$1, g2.y$1);
+  var i$1 = 0;
+  var len$1 = $uI(array$1["length"]);
+  while ((i$1 < len$1)) {
+    var index$1 = i$1;
+    var arg1$1 = array$1[index$1];
+    var stop$1 = $as_T2(arg1$1);
+    gradient$1["addColorStop"]($uD(stop$1.$$und1__O()), $as_T(stop$1.$$und2__O()));
+    i$1 = ((1 + i$1) | 0)
+  };
+  this$3.fill__p1__Lorg_scalajs_dom_raw_CanvasGradient__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(gradient$1, context);
+  context["closePath"]();
+  context["stroke"]();
+  this.drawHoles$1__p1__Lcom_github_unisay_flutes_Vector2d__s_Enumeration$Value__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(upperLeft.right__D__Lcom_github_unisay_flutes_Vector2d(((this.fluteWidth$1 / 2) | 0)), tone, context)
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$drawRow__Lcom_github_unisay_flutes_Vector2d__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Vector2d = (function(start, tones, context) {
+  return $as_Lcom_github_unisay_flutes_Vector2d(tones.foldLeft__O__F2__O(start, new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(context$2) {
+    return (function(point$2, tone$2) {
+      var point = $as_Lcom_github_unisay_flutes_Vector2d(point$2);
+      var tone = $as_s_Enumeration$Value(tone$2);
+      $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$drawFlute__Lcom_github_unisay_flutes_Vector2d__s_Enumeration$Value__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(point, tone, context$2);
+      return point.right__D__Lcom_github_unisay_flutes_Vector2d($imul(2, $m_Lcom_github_unisay_flutes_FluteApp$().fluteWidth$1))
+    })
+  })(context))))
 });
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype.$$js$exported$meth$main__O = (function() {
   this.main__V()
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.line__p1__Lcom_github_unisay_flutes_Point__Lcom_github_unisay_flutes_Point__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(start, end, context) {
-  context["beginPath"]();
-  context["moveTo"](start.x$1, start.y$1);
-  context["lineTo"](end.x$1, end.y$1);
-  context["stroke"]()
-});
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.circle__p1__Lcom_github_unisay_flutes_Point__D__s_Option__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(center, radius, fillColor, context) {
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.circle__p1__Lcom_github_unisay_flutes_Vector2d__D__s_Option__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(center, radius, fillColor, context) {
   context["beginPath"]();
   context["arc"](center.x$1, center.y$1, radius, 0.0, 6.283185307179586);
   if ((!fillColor.isEmpty__Z())) {
     var arg1 = fillColor.get__O();
-    var color = $as_T(arg1);
-    context["fillStyle"] = color;
-    context["fill"]()
+    var style = $as_T(arg1);
+    $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$fill__T__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(style, context)
   };
+  context["closePath"]();
   context["stroke"]()
 });
-$c_Lcom_github_unisay_flutes_FluteApp$.prototype.drawFlutes__p1__Lcom_github_unisay_flutes_Point__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Point = (function(start, toneRows, context) {
-  return $as_Lcom_github_unisay_flutes_Point(toneRows.foldLeft__O__F2__O(start, new $c_sjsr_AnonFunction2().init___sjs_js_Function2((function(context$1) {
-    return (function(point$2, tones$2) {
-      var point = $as_Lcom_github_unisay_flutes_Point(point$2);
-      var tones = $as_sc_Seq(tones$2);
-      $m_Lcom_github_unisay_flutes_FluteApp$().com$github$unisay$flutes$FluteApp$$drawRow__Lcom_github_unisay_flutes_Point__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Point(point, tones, context$1);
-      return point.down__D__Lcom_github_unisay_flutes_Point(260.0)
-    })
-  })(context))))
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.drawHoles$1__p1__Lcom_github_unisay_flutes_Vector2d__s_Enumeration$Value__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(v, tone, context$3) {
+  var ss = $as_sc_LinearSeqLike(this.states$1.apply__O__O(tone)).iterator__sc_Iterator();
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.up__D__Lcom_github_unisay_flutes_Vector2d(15.0), $uI(ss.next__O()), 3.0, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(15.0), $uI(ss.next__O()), 4.5, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(35.0), $uI(ss.next__O()), 4.5, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(55.0), $uI(ss.next__O()), 4.5, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(80.0), $uI(ss.next__O()), 4.5, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(100.0), $uI(ss.next__O()), 4.5, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(120.0), $uI(ss.next__O()), 4.5, context$3);
+  this.drawHole$1__p1__Lcom_github_unisay_flutes_Vector2d__I__D__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V(v.down__D__Lcom_github_unisay_flutes_Vector2d(140.0), $uI(ss.next__O()), 4.5, context$3)
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.com$github$unisay$flutes$FluteApp$$line__Lcom_github_unisay_flutes_Vector2d__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V = (function(from, to, context, scale) {
+  this.com$github$unisay$flutes$FluteApp$$moveTo__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V(from, context, scale);
+  this.com$github$unisay$flutes$FluteApp$$lineTo__Lcom_github_unisay_flutes_Vector2d__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Scale__V(to, context, scale)
 });
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype.parseTones__p1__sc_Seq = (function() {
   var this$2 = new $c_sci_StringOps().init___T($as_T($g["window"]["location"]["search"]));
-  var x$1 = $s_sci_StringLike$class__stripPrefix__sci_StringLike__T__T(this$2, "?tones=");
-  var this$4 = $m_s_Console$();
-  var this$5 = this$4.outVar$2;
-  $as_Ljava_io_PrintStream(this$5.tl$1.get__O()).println__O__V(x$1);
-  var this$7 = new $c_sci_StringOps().init___T($as_T($g["window"]["location"]["search"]));
-  var thiz = $s_sci_StringLike$class__stripPrefix__sci_StringLike__T__T(this$7, "?tones=");
+  var thiz = $s_sci_StringLike$class__stripPrefix__sci_StringLike__T__T(this$2, "?tones=");
   var xs = $m_sjsr_RuntimeString$().split__T__T__I__AT(thiz, "%0D%0A", 0);
-  var this$12 = new $c_scm_WrappedArray$ofRef().init___AO(xs);
-  var this$11 = $m_sc_Seq$();
-  var bf = this$11.ReusableCBFInstance$2;
-  var b = $s_sc_TraversableLike$class__builder$1__p0__sc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$12, bf);
+  var this$7 = new $c_scm_WrappedArray$ofRef().init___AO(xs);
+  var this$6 = $m_sc_Seq$();
+  var bf = this$6.ReusableCBFInstance$2;
+  var b = $s_sc_TraversableLike$class__builder$1__p0__sc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$7, bf);
   var i = 0;
-  var len = this$12.length__I();
+  var len = this$7.length__I();
   while ((i < len)) {
-    var arg1 = this$12.apply__I__O(i);
-    var x$1$1 = $as_T(arg1);
-    var this$15 = new $c_sci_StringOps().init___T($as_T(x$1$1["toUpperCase"]()));
+    var arg1 = this$7.apply__I__O(i);
+    var x$2 = $as_T(arg1);
+    var this$9 = new $c_sci_StringOps().init___T(x$2);
     var b$1 = new $c_scm_StringBuilder().init___();
     var i$1 = 0;
-    var $$this$1 = this$15.repr$1;
+    var $$this$1 = this$9.repr$1;
     var len$1 = $uI($$this$1["length"]);
     while ((i$1 < len$1)) {
-      var arg1$1 = this$15.apply__I__O(i$1);
+      var arg1$1 = this$9.apply__I__O(i$1);
       if ((arg1$1 === null)) {
-        var x$2$1 = 0
+        var x$3 = 0
       } else {
-        var this$21 = $as_jl_Character(arg1$1);
-        var x$2$1 = this$21.value$1
+        var this$15 = $as_jl_Character(arg1$1);
+        var x$3 = this$15.value$1
       };
-      var this$25 = new $c_sci_StringOps().init___T("ABCDEFG");
-      var elem = new $c_jl_Character().init___C(x$2$1);
-      if ($s_sc_SeqLike$class__contains__sc_SeqLike__O__Z(this$25, elem)) {
+      var this$19 = new $c_sci_StringOps().init___T("abcdefgABCDEFG");
+      var elem = new $c_jl_Character().init___C(x$3);
+      if ($s_sc_SeqLike$class__contains__sc_SeqLike__O__Z(this$19, elem)) {
         if ((arg1$1 === null)) {
           var jsx$1 = 0
         } else {
-          var this$27 = $as_jl_Character(arg1$1);
-          var jsx$1 = this$27.value$1
+          var this$21 = $as_jl_Character(arg1$1);
+          var jsx$1 = this$21.value$1
         };
         b$1.$$plus$eq__C__scm_StringBuilder(jsx$1)
       };
       i$1 = ((1 + i$1) | 0)
     };
-    var this$28 = b$1.underlying$5;
-    var this$38 = new $c_sci_StringOps().init___T(this$28.content$1);
-    var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(x$3$2) {
-      if ((x$3$2 === null)) {
-        var x$3$1 = 0
+    var this$22 = b$1.underlying$5;
+    var this$32 = new $c_sci_StringOps().init___T(this$22.content$1);
+    var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(x$4$2) {
+      if ((x$4$2 === null)) {
+        var x$4 = 0
       } else {
-        var this$31 = $as_jl_Character(x$3$2);
-        var x$3$1 = this$31.value$1
+        var this$25 = $as_jl_Character(x$4$2);
+        var x$4 = this$25.value$1
       };
-      return $as_T($g["String"]["fromCharCode"](x$3$1))
+      return $as_T($g["String"]["fromCharCode"](x$4))
     }));
-    var this$37 = $m_s_Predef$();
-    var bf$1 = new $c_s_LowPriorityImplicits$$anon$4().init___s_LowPriorityImplicits(this$37);
-    b.$$plus$eq__O__scm_Builder($as_sci_IndexedSeq($as_sc_TraversableLike($s_sc_TraversableLike$class__map__sc_TraversableLike__F1__scg_CanBuildFrom__O(this$38, f, bf$1)).map__F1__scg_CanBuildFrom__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(s$2) {
+    var this$31 = $m_s_Predef$();
+    var bf$1 = new $c_s_LowPriorityImplicits$$anon$4().init___s_LowPriorityImplicits(this$31);
+    b.$$plus$eq__O__scm_Builder($as_sci_IndexedSeq($as_sc_TraversableLike($s_sc_TraversableLike$class__map__sc_TraversableLike__F1__scg_CanBuildFrom__O(this$32, f, bf$1)).map__F1__scg_CanBuildFrom__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(s$2) {
       var s = $as_T(s$2);
       return $m_Lcom_github_unisay_flutes_FluteApp$Tone$().withName__T__s_Enumeration$Value(s)
     })), ($m_sci_IndexedSeq$(), $m_sc_IndexedSeq$().ReusableCBF$6))));
     i = ((1 + i) | 0)
   };
   return $as_sc_Seq(b.result__O())
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype.resizeCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__V = (function(canvas, context) {
+  canvas["width"] = $uI($g["window"]["innerWidth"]);
+  canvas["height"] = $uI($g["window"]["innerHeight"]);
+  this.drawFlutes__p1__Lcom_github_unisay_flutes_Vector2d__sc_Seq__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__Lcom_github_unisay_flutes_Vector2d(new $c_Lcom_github_unisay_flutes_Vector2d().init___D__D(15, 25), this.parseTones__p1__sc_Seq(), context)
+});
+$c_Lcom_github_unisay_flutes_FluteApp$.prototype["resizeCanvas"] = (function(arg$1, arg$2) {
+  var prep0 = arg$1;
+  var prep1 = arg$2;
+  return this.$$js$exported$meth$resizeCanvas__Lorg_scalajs_dom_raw_HTMLCanvasElement__Lorg_scalajs_dom_raw_CanvasRenderingContext2D__O(prep0, prep1)
 });
 $c_Lcom_github_unisay_flutes_FluteApp$.prototype["main"] = (function() {
   return this.$$js$exported$meth$main__O()
@@ -6800,10 +6890,6 @@ function $h_s_Enumeration() {
   /*<skip>*/
 }
 $h_s_Enumeration.prototype = $c_s_Enumeration.prototype;
-$c_s_Enumeration.prototype.init___ = (function() {
-  $c_s_Enumeration.prototype.init___I.call(this, 0);
-  return this
-});
 $c_s_Enumeration.prototype.values__s_Enumeration$ValueSet = (function() {
   if ((!this.scala$Enumeration$$vsetDefined$1)) {
     var this$1 = this.ValueSet__s_Enumeration$ValueSet$();
@@ -6814,6 +6900,10 @@ $c_s_Enumeration.prototype.values__s_Enumeration$ValueSet = (function() {
     this.scala$Enumeration$$vsetDefined$1 = true
   };
   return this.vset$1
+});
+$c_s_Enumeration.prototype.init___ = (function() {
+  $c_s_Enumeration.prototype.init___I.call(this, 0);
+  return this
 });
 $c_s_Enumeration.prototype.ValueOrdering__s_Enumeration$ValueOrdering$ = (function() {
   return ((this.ValueOrdering$module$1 === null) ? this.ValueOrdering$lzycompute__p1__s_Enumeration$ValueOrdering$() : this.ValueOrdering$module$1)
@@ -8298,6 +8388,13 @@ var $d_sr_Nothing$ = new $TypeData().initClass({
 /** @constructor */
 function $c_Lcom_github_unisay_flutes_FluteApp$Tone$() {
   $c_s_Enumeration.call(this);
+  this.c$2 = null;
+  this.d$2 = null;
+  this.e$2 = null;
+  this.f$2 = null;
+  this.g$2 = null;
+  this.a$2 = null;
+  this.b$2 = null;
   this.C$2 = null;
   this.D$2 = null;
   this.E$2 = null;
@@ -8316,27 +8413,48 @@ $h_Lcom_github_unisay_flutes_FluteApp$Tone$.prototype = $c_Lcom_github_unisay_fl
 $c_Lcom_github_unisay_flutes_FluteApp$Tone$.prototype.init___ = (function() {
   $c_s_Enumeration.prototype.init___.call(this);
   $n_Lcom_github_unisay_flutes_FluteApp$Tone$ = this;
-  var name = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "C");
+  var name = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "c");
   var i = this.nextId$1;
-  this.C$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i, name);
-  var name$1 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "D");
+  this.c$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i, name);
+  var name$1 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "d");
   var i$1 = this.nextId$1;
-  this.D$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$1, name$1);
-  var name$2 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "E");
+  this.d$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$1, name$1);
+  var name$2 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "e");
   var i$2 = this.nextId$1;
-  this.E$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$2, name$2);
-  var name$3 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "F");
+  this.e$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$2, name$2);
+  var name$3 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "f");
   var i$3 = this.nextId$1;
-  this.F$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$3, name$3);
-  var name$4 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "G");
+  this.f$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$3, name$3);
+  var name$4 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "g");
   var i$4 = this.nextId$1;
-  this.G$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$4, name$4);
-  var name$5 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "A");
+  this.g$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$4, name$4);
+  var name$5 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "a");
   var i$5 = this.nextId$1;
-  this.A$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$5, name$5);
-  var name$6 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "B");
+  this.a$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$5, name$5);
+  var name$6 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "b");
   var i$6 = this.nextId$1;
-  this.B$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$6, name$6);
+  this.b$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$6, name$6);
+  var name$7 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "C");
+  var i$7 = this.nextId$1;
+  this.C$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$7, name$7);
+  var name$8 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "D");
+  var i$8 = this.nextId$1;
+  this.D$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$8, name$8);
+  var name$9 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "E");
+  var i$9 = this.nextId$1;
+  this.E$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$9, name$9);
+  var name$10 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "F");
+  var i$10 = this.nextId$1;
+  this.F$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$10, name$10);
+  var name$11 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "G");
+  var i$11 = this.nextId$1;
+  this.G$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$11, name$11);
+  var name$12 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "A");
+  var i$12 = this.nextId$1;
+  this.A$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$12, name$12);
+  var name$13 = (((this.nextName$1 !== null) && this.nextName$1.hasNext__Z()) ? $as_T(this.nextName$1.next__O()) : "B");
+  var i$13 = this.nextId$1;
+  this.B$2 = new $c_s_Enumeration$Val().init___s_Enumeration__I__T(this, i$13, name$13);
   return this
 });
 var $d_Lcom_github_unisay_flutes_FluteApp$Tone$ = new $TypeData().initClass({
@@ -9362,38 +9480,35 @@ var $d_scm_WrappedArrayBuilder = new $TypeData().initClass({
 });
 $c_scm_WrappedArrayBuilder.prototype.$classData = $d_scm_WrappedArrayBuilder;
 /** @constructor */
-function $c_Lcom_github_unisay_flutes_Point() {
+function $c_Lcom_github_unisay_flutes_Scale() {
   $c_O.call(this);
   this.x$1 = 0.0;
   this.y$1 = 0.0
 }
-$c_Lcom_github_unisay_flutes_Point.prototype = new $h_O();
-$c_Lcom_github_unisay_flutes_Point.prototype.constructor = $c_Lcom_github_unisay_flutes_Point;
+$c_Lcom_github_unisay_flutes_Scale.prototype = new $h_O();
+$c_Lcom_github_unisay_flutes_Scale.prototype.constructor = $c_Lcom_github_unisay_flutes_Scale;
 /** @constructor */
-function $h_Lcom_github_unisay_flutes_Point() {
+function $h_Lcom_github_unisay_flutes_Scale() {
   /*<skip>*/
 }
-$h_Lcom_github_unisay_flutes_Point.prototype = $c_Lcom_github_unisay_flutes_Point.prototype;
-$c_Lcom_github_unisay_flutes_Point.prototype.productPrefix__T = (function() {
-  return "Point"
+$h_Lcom_github_unisay_flutes_Scale.prototype = $c_Lcom_github_unisay_flutes_Scale.prototype;
+$c_Lcom_github_unisay_flutes_Scale.prototype.productPrefix__T = (function() {
+  return "Scale"
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.productArity__I = (function() {
+$c_Lcom_github_unisay_flutes_Scale.prototype.productArity__I = (function() {
   return 2
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.equals__O__Z = (function(x$1) {
+$c_Lcom_github_unisay_flutes_Scale.prototype.equals__O__Z = (function(x$1) {
   if ((this === x$1)) {
     return true
-  } else if ($is_Lcom_github_unisay_flutes_Point(x$1)) {
-    var Point$1 = $as_Lcom_github_unisay_flutes_Point(x$1);
-    return ((this.x$1 === Point$1.x$1) && (this.y$1 === Point$1.y$1))
+  } else if ($is_Lcom_github_unisay_flutes_Scale(x$1)) {
+    var Scale$1 = $as_Lcom_github_unisay_flutes_Scale(x$1);
+    return ((this.x$1 === Scale$1.x$1) && (this.y$1 === Scale$1.y$1))
   } else {
     return false
   }
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.right__D__Lcom_github_unisay_flutes_Point = (function(d) {
-  return new $c_Lcom_github_unisay_flutes_Point().init___D__D((this.x$1 + d), this.y$1)
-});
-$c_Lcom_github_unisay_flutes_Point.prototype.productElement__I__O = (function(x$1) {
+$c_Lcom_github_unisay_flutes_Scale.prototype.productElement__I__O = (function(x$1) {
   switch (x$1) {
     case 0: {
       return this.x$1;
@@ -9408,49 +9523,139 @@ $c_Lcom_github_unisay_flutes_Point.prototype.productElement__I__O = (function(x$
     }
   }
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.toString__T = (function() {
+$c_Lcom_github_unisay_flutes_Scale.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.init___D__D = (function(x, y) {
+$c_Lcom_github_unisay_flutes_Scale.prototype.init___D__D = (function(x, y) {
   this.x$1 = x;
   this.y$1 = y;
   return this
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.down__D__Lcom_github_unisay_flutes_Point = (function(d) {
-  return new $c_Lcom_github_unisay_flutes_Point().init___D__D(this.x$1, (this.y$1 + d))
-});
-$c_Lcom_github_unisay_flutes_Point.prototype.hashCode__I = (function() {
+$c_Lcom_github_unisay_flutes_Scale.prototype.hashCode__I = (function() {
   var acc = (-889275714);
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.x$1));
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.y$1));
   return $m_sr_Statics$().finalizeHash__I__I__I(acc, 2)
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.productIterator__sc_Iterator = (function() {
+$c_Lcom_github_unisay_flutes_Scale.prototype.productIterator__sc_Iterator = (function() {
   return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
 });
-function $is_Lcom_github_unisay_flutes_Point(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_github_unisay_flutes_Point)))
+function $is_Lcom_github_unisay_flutes_Scale(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_github_unisay_flutes_Scale)))
 }
-function $as_Lcom_github_unisay_flutes_Point(obj) {
-  return (($is_Lcom_github_unisay_flutes_Point(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "com.github.unisay.flutes.Point"))
+function $as_Lcom_github_unisay_flutes_Scale(obj) {
+  return (($is_Lcom_github_unisay_flutes_Scale(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "com.github.unisay.flutes.Scale"))
 }
-function $isArrayOf_Lcom_github_unisay_flutes_Point(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_github_unisay_flutes_Point)))
+function $isArrayOf_Lcom_github_unisay_flutes_Scale(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_github_unisay_flutes_Scale)))
 }
-function $asArrayOf_Lcom_github_unisay_flutes_Point(obj, depth) {
-  return (($isArrayOf_Lcom_github_unisay_flutes_Point(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.github.unisay.flutes.Point;", depth))
+function $asArrayOf_Lcom_github_unisay_flutes_Scale(obj, depth) {
+  return (($isArrayOf_Lcom_github_unisay_flutes_Scale(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.github.unisay.flutes.Scale;", depth))
 }
-var $d_Lcom_github_unisay_flutes_Point = new $TypeData().initClass({
-  Lcom_github_unisay_flutes_Point: 0
-}, false, "com.github.unisay.flutes.Point", {
-  Lcom_github_unisay_flutes_Point: 1,
+var $d_Lcom_github_unisay_flutes_Scale = new $TypeData().initClass({
+  Lcom_github_unisay_flutes_Scale: 0
+}, false, "com.github.unisay.flutes.Scale", {
+  Lcom_github_unisay_flutes_Scale: 1,
   O: 1,
   s_Product: 1,
   s_Equals: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lcom_github_unisay_flutes_Point.prototype.$classData = $d_Lcom_github_unisay_flutes_Point;
+$c_Lcom_github_unisay_flutes_Scale.prototype.$classData = $d_Lcom_github_unisay_flutes_Scale;
+/** @constructor */
+function $c_Lcom_github_unisay_flutes_Vector2d() {
+  $c_O.call(this);
+  this.x$1 = 0.0;
+  this.y$1 = 0.0
+}
+$c_Lcom_github_unisay_flutes_Vector2d.prototype = new $h_O();
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.constructor = $c_Lcom_github_unisay_flutes_Vector2d;
+/** @constructor */
+function $h_Lcom_github_unisay_flutes_Vector2d() {
+  /*<skip>*/
+}
+$h_Lcom_github_unisay_flutes_Vector2d.prototype = $c_Lcom_github_unisay_flutes_Vector2d.prototype;
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.productPrefix__T = (function() {
+  return "Vector2d"
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.up__D__Lcom_github_unisay_flutes_Vector2d = (function(d) {
+  return new $c_Lcom_github_unisay_flutes_Vector2d().init___D__D(this.x$1, (this.y$1 - d))
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.productArity__I = (function() {
+  return 2
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.equals__O__Z = (function(x$1) {
+  if ((this === x$1)) {
+    return true
+  } else if ($is_Lcom_github_unisay_flutes_Vector2d(x$1)) {
+    var Vector2d$1 = $as_Lcom_github_unisay_flutes_Vector2d(x$1);
+    return ((this.x$1 === Vector2d$1.x$1) && (this.y$1 === Vector2d$1.y$1))
+  } else {
+    return false
+  }
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.productElement__I__O = (function(x$1) {
+  switch (x$1) {
+    case 0: {
+      return this.x$1;
+      break
+    }
+    case 1: {
+      return this.y$1;
+      break
+    }
+    default: {
+      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
+    }
+  }
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.down__D__Lcom_github_unisay_flutes_Vector2d = (function(d) {
+  return new $c_Lcom_github_unisay_flutes_Vector2d().init___D__D(this.x$1, (this.y$1 + d))
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.init___D__D = (function(x, y) {
+  this.x$1 = x;
+  this.y$1 = y;
+  return this
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.hashCode__I = (function() {
+  var acc = (-889275714);
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.x$1));
+  acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().doubleHash__D__I(this.y$1));
+  return $m_sr_Statics$().finalizeHash__I__I__I(acc, 2)
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.right__D__Lcom_github_unisay_flutes_Vector2d = (function(d) {
+  return new $c_Lcom_github_unisay_flutes_Vector2d().init___D__D((this.x$1 + d), this.y$1)
+});
+function $is_Lcom_github_unisay_flutes_Vector2d(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_github_unisay_flutes_Vector2d)))
+}
+function $as_Lcom_github_unisay_flutes_Vector2d(obj) {
+  return (($is_Lcom_github_unisay_flutes_Vector2d(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "com.github.unisay.flutes.Vector2d"))
+}
+function $isArrayOf_Lcom_github_unisay_flutes_Vector2d(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcom_github_unisay_flutes_Vector2d)))
+}
+function $asArrayOf_Lcom_github_unisay_flutes_Vector2d(obj, depth) {
+  return (($isArrayOf_Lcom_github_unisay_flutes_Vector2d(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcom.github.unisay.flutes.Vector2d;", depth))
+}
+var $d_Lcom_github_unisay_flutes_Vector2d = new $TypeData().initClass({
+  Lcom_github_unisay_flutes_Vector2d: 0
+}, false, "com.github.unisay.flutes.Vector2d", {
+  Lcom_github_unisay_flutes_Vector2d: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lcom_github_unisay_flutes_Vector2d.prototype.$classData = $d_Lcom_github_unisay_flutes_Vector2d;
 /** @constructor */
 function $c_jl_ArithmeticException() {
   $c_jl_RuntimeException.call(this)
@@ -11237,9 +11442,6 @@ $h_T2.prototype = $c_T2.prototype;
 $c_T2.prototype.productPrefix__T = (function() {
   return "Tuple2"
 });
-$c_T2.prototype.$$und1$mcI$sp__I = (function() {
-  return $uI(this.$$und1__O())
-});
 $c_T2.prototype.productArity__I = (function() {
   return 2
 });
@@ -12191,18 +12393,6 @@ var $d_s_reflect_ClassTag$ClassClassTag = new $TypeData().initClass({
   s_Equals: 1
 });
 $c_s_reflect_ClassTag$ClassClassTag.prototype.$classData = $d_s_reflect_ClassTag$ClassClassTag;
-function $is_sc_GenIterable(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sc_GenIterable)))
-}
-function $as_sc_GenIterable(obj) {
-  return (($is_sc_GenIterable(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.GenIterable"))
-}
-function $isArrayOf_sc_GenIterable(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sc_GenIterable)))
-}
-function $asArrayOf_sc_GenIterable(obj, depth) {
-  return (($isArrayOf_sc_GenIterable(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.GenIterable;", depth))
-}
 /** @constructor */
 function $c_sc_Seq$() {
   $c_scg_SeqFactory.call(this)
@@ -13946,21 +14136,21 @@ $c_sc_AbstractIterable.prototype.head__O = (function() {
 $c_sc_AbstractIterable.prototype.thisCollection__sc_Iterable = (function() {
   return this
 });
-$c_sc_AbstractIterable.prototype.sameElements__sc_GenIterable__Z = (function(that) {
-  return $s_sc_IterableLike$class__sameElements__sc_IterableLike__sc_GenIterable__Z(this, that)
-});
 $c_sc_AbstractIterable.prototype.exists__F1__Z = (function(p) {
   var this$1 = this.iterator__sc_Iterator();
   return $s_sc_Iterator$class__exists__sc_Iterator__F1__Z(this$1, p)
 });
+$c_sc_AbstractIterable.prototype.sameElements__sc_GenIterable__Z = (function(that) {
+  return $s_sc_IterableLike$class__sameElements__sc_IterableLike__sc_GenIterable__Z(this, that)
+});
 $c_sc_AbstractIterable.prototype.thisCollection__sc_Traversable = (function() {
   return this.thisCollection__sc_Iterable()
 });
-$c_sc_AbstractIterable.prototype.seq__sc_Iterable = (function() {
-  return this
-});
 $c_sc_AbstractIterable.prototype.isEmpty__Z = (function() {
   return $s_sc_IterableLike$class__isEmpty__sc_IterableLike__Z(this)
+});
+$c_sc_AbstractIterable.prototype.seq__sc_Iterable = (function() {
+  return this
 });
 $c_sc_AbstractIterable.prototype.companion__scg_GenericCompanion = (function() {
   return $m_sc_Iterable$()
@@ -14724,10 +14914,10 @@ $c_sci_Set$EmptySet$.prototype.init___ = (function() {
 $c_sci_Set$EmptySet$.prototype.apply__O__O = (function(v1) {
   return false
 });
-$c_sci_Set$EmptySet$.prototype.thisCollection__sc_Traversable = (function() {
+$c_sci_Set$EmptySet$.prototype.seq__sc_Iterable = (function() {
   return this
 });
-$c_sci_Set$EmptySet$.prototype.seq__sc_Iterable = (function() {
+$c_sci_Set$EmptySet$.prototype.thisCollection__sc_Traversable = (function() {
   return this
 });
 $c_sci_Set$EmptySet$.prototype.companion__scg_GenericCompanion = (function() {
@@ -16972,11 +17162,11 @@ $c_sci_Range.prototype.isInclusive__Z = (function() {
 $c_sci_Range.prototype.head__O = (function() {
   return this.head__I()
 });
-$c_sci_Range.prototype.apply__I__O = (function(idx) {
-  return this.apply$mcII$sp__I__I(idx)
-});
 $c_sci_Range.prototype.thisCollection__sc_Iterable = (function() {
   return this
+});
+$c_sci_Range.prototype.apply__I__O = (function(idx) {
+  return this.apply$mcII$sp__I__I(idx)
 });
 $c_sci_Range.prototype.apply__O__O = (function(v1) {
   var idx = $uI(v1);
@@ -19098,11 +19288,11 @@ $h_scm_AbstractSet.prototype = $c_scm_AbstractSet.prototype;
 $c_scm_AbstractSet.prototype.seq__sc_TraversableOnce = (function() {
   return this
 });
-$c_scm_AbstractSet.prototype.isEmpty__Z = (function() {
-  return $s_sc_SetLike$class__isEmpty__sc_SetLike__Z(this)
-});
 $c_scm_AbstractSet.prototype.seq__sc_Iterable = (function() {
   return this
+});
+$c_scm_AbstractSet.prototype.isEmpty__Z = (function() {
+  return $s_sc_SetLike$class__isEmpty__sc_SetLike__Z(this)
 });
 $c_scm_AbstractSet.prototype.equals__O__Z = (function(that) {
   return $s_sc_GenSetLike$class__equals__sc_GenSetLike__O__Z(this, that)
@@ -19182,11 +19372,11 @@ $c_scm_WrappedArray.prototype.sameElements__sc_GenIterable__Z = (function(that) 
 $c_scm_WrappedArray.prototype.exists__F1__Z = (function(p) {
   return $s_sc_IndexedSeqOptimized$class__exists__sc_IndexedSeqOptimized__F1__Z(this, p)
 });
-$c_scm_WrappedArray.prototype.isEmpty__Z = (function() {
-  return $s_sc_IndexedSeqOptimized$class__isEmpty__sc_IndexedSeqOptimized__Z(this)
-});
 $c_scm_WrappedArray.prototype.seq__sc_Iterable = (function() {
   return this
+});
+$c_scm_WrappedArray.prototype.isEmpty__Z = (function() {
+  return $s_sc_IndexedSeqOptimized$class__isEmpty__sc_IndexedSeqOptimized__Z(this)
 });
 $c_scm_WrappedArray.prototype.thisCollection__sc_Traversable = (function() {
   return this

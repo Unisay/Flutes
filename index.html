@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flute</title>
+    <title>Блок-флейты</title>
     <style>
         body {
             background-color: white;
@@ -16,9 +16,10 @@
             height: 600px;
             border: none;
         }
-        #legend td{
+        #legend td {
             width: 60px;
             text-align: center;
+            background-color: #F0F0F0;
         }
     </style>
 </head>
@@ -28,6 +29,7 @@
 </h2>
 <table id="legend">
     <tr>
+        <th>Октава</th>
         <th>До</th>
         <th>Ре</th>
         <th>Ми</th>
@@ -37,6 +39,17 @@
         <th>Си</th>
     </tr>
     <tr>
+        <td>1</td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        <td>g</td>
+        <td>a</td>
+        <td>b</td>
+    </tr>
+    <tr>
+        <td>2</td>
         <td>С</td>
         <td>D</td>
         <td>E</td>
@@ -46,16 +59,19 @@
         <td>B</td>
     </tr>
 </table>
-<form action="frame.html" target="flutes" method="get">
+<form id="render" action="frame.html" target="flutes" method="get">
     <p>
         <textarea id="tones" name="tones" spellcheck="false">ABCDEF
 FEDCBA</textarea>
     </p>
-    <p>
-        <input type="submit" value="Нарисовать флейты"/>
-    </p>
 </form>
 
 <iframe id="flutes" name="flutes" src="frame.html?abcdefg"></iframe>
+
+<script>
+    document.getElementById('tones').addEventListener('input', function() {
+      document.getElementById('render').submit();
+    });
+</script>
 </body>
 </html>
