@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <title>Flute</title>
     <style>
-        body {
-            margin: 0px;
-            padding: 0px;
-            background-color: white;
+        * {
+          margin:0;
+          padding:0;
+        }
+
+        html, body {
+          width: 100%;
+          height: 100%;
+        }
+
+        canvas {
+            display: block;
         }
     </style>
     <!-- Development only ! -->
 </head>
 <body>
-<canvas id="fluteCanvas" width="800" height="600"></canvas>
+<canvas id="fluteCanvas"></canvas>
 <script type="text/javascript" src="./target/scala-2.11/flute-fastopt.js"></script>
 <script type="text/javascript">com.github.unisay.flutes.FluteApp().main();</script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flute</title>
+    <title>Блок-флейты</title>
     <style>
         body {
             background-color: white;
@@ -40,35 +40,38 @@
     </tr>
     <tr>
         <td>1</td>
-        <td><button>c</button></td>
-        <td><button>d</button></td>
-        <td><button>e</button></td>
-        <td><button>f</button></td>
-        <td><button>g</button></td>
-        <td><button>a</button></td>
-        <td><button>b</button></td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        <td>g</td>
+        <td>a</td>
+        <td>b</td>
     </tr>
     <tr>
         <td>2</td>
-        <td><button>С</button></td>
-        <td><button>D</button></td>
-        <td><button>E</button></td>
-        <td><button>F</button></td>
-        <td><button>G</button></td>
-        <td><button>A</button></td>
-        <td><button>B</button></td>
+        <td>С</td>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+        <td>G</td>
+        <td>A</td>
+        <td>B</td>
     </tr>
 </table>
-<form action="frame-dev.html" target="flutes" method="get">
+<form id="render" action="frame.html" target="flutes" method="get">
     <p>
         <textarea id="tones" name="tones" spellcheck="false">ABCDEF
 FEDCBA</textarea>
     </p>
-    <p>
-        <input type="submit" value="Нарисовать флейты"/>
-    </p>
 </form>
 
-<iframe id="flutes" name="flutes" src="frame-dev.html?abcdefg"></iframe>
+<iframe id="flutes" name="flutes" src="frame.html?abcdefg"></iframe>
+
+<script>
+    document.getElementById('tones').addEventListener('input', function() {
+      document.getElementById('render').submit();
+    });
+</script>
 </body>
 </html>
